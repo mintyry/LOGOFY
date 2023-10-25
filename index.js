@@ -17,11 +17,11 @@ const questions = [
     {
         type: 'input',
         name: 'logoName',
-        message: 'Please enter three letters for your logo name/text.',
+        message: 'Please enter three letters for your logo name/text.'
     },
     {
         type: 'input',
-        name: 'colorChoice',
+        name: 'textColorChoice',
         message: 'What is the color of your text?'
     }
 ];
@@ -29,9 +29,12 @@ const questions = [
 function start() {
     inquirer
         .prompt(questions)
-        .then(fs.writeFile(/*filetowriteto, datawe'rewriting,*/() => {
-            err ? console.log(err) : console.log('Success');
-        }))
+        .then(function (data) {
+            console.log(data)
+            fs.writeFile('./dist/logo.svg', data, (err) => {
+                err ? console.log(err) : console.log('Success');
+            })
+        })
 }
 
 start();
