@@ -1,5 +1,6 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
+const choices = require('./lib/shapes.js')
 
 const questions = [
     {
@@ -31,8 +32,11 @@ function start() {
         .prompt(questions)
         .then(function (data) {
             console.log(data)
-            fs.writeFile('./dist/logo.svg', data, (err) => {
-                err ? console.log(err) : console.log('Success');
+            if (data.shapeChoice === 'circle'){
+                console.log(choices.Circle);
+            }
+            fs.writeFile('./dist/logo.svg', choices, (err) => {
+                err ? console.log(err) : console.log('Generated logo.svg');
             })
         })
 }
