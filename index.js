@@ -31,9 +31,8 @@ function start() {
     inquirer
         .prompt(questions)
         .then(function (data) {
+            let finalSVG = '';
             console.log(data)
-            let finalSVG =''
-
             if (data.shapeChoice === 'Triangle') {
                 console.log(Triangle);
                 //why is this logging the class in an array? Is it bc that's what the user's answer translates to in inquirer?
@@ -56,7 +55,7 @@ function start() {
                 finalSVG = userSquare.render();
 
             }
-            fs.writeFile('./dist/logo.svg', finalSVG , (err) => {
+            fs.writeFile('./dist/logo.svg', finalSVG, (err) => {
                 err ? console.log(err) : console.log('Generated logo.svg');
             })
         })
